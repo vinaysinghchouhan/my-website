@@ -1,193 +1,235 @@
 import { motion } from 'motion/react';
-import { Badge } from './ui/badge';
+import { Sparkles, Target, Rocket } from 'lucide-react';
 
-const designSkills = [
-  'User Research and Analysis',
-  'Empathy Maps',
-  'User Personas',
-  'Wireframing',
-  'Interaction Design',
-  'Information Architecture',
-  'Design System',
-  'Figma',
-  'Storyboarding',
-  'Journey Mapping'
-];
-
-const developmentSkills = [
-  'Webflow',
-  'HTML and Semantic Markup',
-  'PUG Templating',
-  'CSS3',
-  'SASS',
-  'ITCSS',
-  'JavaScript & jQuery',
-  'GSAP Animations',
-  'Github',
-  'Collaborate with the frontend team'
-];
-
-const coreCompetencies = [
-  'Problem Solver',
-  'Innovative Thinker',
-  'Team Player',
-  'Detail-Oriented',
-  'Strategic Planner',
-  'Collaborative Leader',
-  'Strategic Thinking',
-  'Creative Visionary',
-  'User-Centric Approach',
-  'Process Improvement',
-  'Presentation Skills',
-  'Multitasker',
-  'Communication Skills'
-];
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
+const skillGroups = [
+  {
+    title: 'Discovery & Strategy',
+    number: '01',
+    icon: Target,
+    description: 'Understanding user needs, business goals, and problem space before design execution.',
+    skills: [
+      'User Research & Analysis',
+      'User Personas & Empathy Mapping',
+      'User Flows & Journey Mapping',
+      'Information Architecture'
+    ],
+    gradient: 'from-purple-500 via-pink-500 to-rose-500',
+    bgGradient: 'from-purple-500/10 via-pink-500/10 to-rose-500/10',
+    position: 'left'
+  },
+  {
+    title: 'Design & Systems',
+    number: '02',
+    icon: Sparkles,
+    description: 'Designing consistent, scalable, and user-centered interfaces across products.',
+    skills: [
+      'UI/UX Design',
+      'Design Systems & Reusable Components',
+      'Wireframing & Prototyping',
+      'Interaction & Visual Design'
+    ],
+    gradient: 'from-blue-500 via-cyan-500 to-teal-500',
+    bgGradient: 'from-blue-500/10 via-cyan-500/10 to-teal-500/10',
+    position: 'center'
+  },
+  {
+    title: 'Collaboration & Delivery',
+    number: '03',
+    icon: Rocket,
+    description: 'Collaborating closely with product and engineering to deliver high-quality outcomes.',
+    skills: [
+      'Design Leadership & Mentorship',
+      'Developer Collaboration & Handoff',
+      'Frontend Collaboration (HTML, CSS understanding)',
+      'Iteration & Feedback'
+    ],
+    gradient: 'from-green-500 via-emerald-500 to-teal-500',
+    bgGradient: 'from-green-500/10 via-emerald-500/10 to-teal-500/10',
+    position: 'right'
   }
-};
+];
 
-const item = {
-  hidden: { opacity: 0, y: 20, scale: 0.8 },
-  show: { 
-    opacity: 1, 
-    y: 0, 
-    scale: 1,
-    transition: {
-      type: "spring",
-      damping: 25,
-      stiffness: 500
-    }
-  }
-};
-
-function SkillCategory({ title, skills, color, delay = 0 }: { 
-  title: string; 
-  skills: string[]; 
-  color: string;
-  delay?: number;
-}) {
+function SkillStage({ group, index, total }: { group: typeof skillGroups[0]; index: number; total: number }) {
+  const Icon = group.icon;
+  const isEven = index % 2 === 0;
+  
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.6, delay }}
-      className="space-y-6"
-    >
-      <div className="text-center">
-        <h3 className="text-2xl font-semibold text-slate-800 mb-2">{title}</h3>
-        <div className={`w-16 h-1 ${color} mx-auto rounded-full`} />
-      </div>
-      
+    <div className="relative">
+      {/* Main Stage Container */}
       <motion.div
-        variants={container}
-        initial="hidden"
-        animate="show"
-        className="flex flex-wrap gap-3 justify-center max-w-2xl mx-auto"
+        initial={{ opacity: 0, y: isEven ? 50 : -50, rotateX: 45 }}
+        animate={{ opacity: 1, y: 0, rotateX: 0 }}
+        transition={{ duration: 0.8, delay: index * 0.3 }}
+        className="relative group"
       >
-        {skills.map((skill, index) => (
-          <motion.div key={skill} variants={item}>
-            <Badge 
-              variant="secondary" 
-              className="text-sm py-2 px-4 bg-white/80 hover:bg-white/90 transition-all duration-300 hover:scale-105 shadow-sm"
-            >
-              {skill}
-            </Badge>
+        {/* Huge Background Number */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.3 + index * 0.3 }}
+          className="absolute -top-12 -left-8 z-0 pointer-events-none"
+        >
+          <span className={`text-[180px] font-bold bg-gradient-to-br ${group.gradient} bg-clip-text text-transparent opacity-10 select-none`}>
+            {group.number}
+          </span>
+        </motion.div>
+
+        {/* Stage Content */}
+        <div className="relative z-10">
+          {/* Icon & Title Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 + index * 0.3 }}
+            className="mb-6"
+          >
+            {/* Title */}
+            <div className="space-y-3">
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 + index * 0.3 }}
+                className={`text-sm font-semibold bg-gradient-to-r ${group.gradient} bg-clip-text text-transparent tracking-wider uppercase`}
+              >
+                Step {group.number}
+              </motion.span>
+              <h3 className="text-3xl md:text-4xl font-bold text-slate-800 leading-tight">
+                {group.title}
+              </h3>
+            </div>
           </motion.div>
-        ))}
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 + index * 0.3 }}
+            className="text-slate-600 text-lg mb-6 leading-relaxed max-w-md"
+          >
+            {group.description}
+          </motion.p>
+
+          {/* Skills - Single Card Container */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 + index * 0.3 }}
+            className="bg-white rounded-lg px-4 py-4 border border-slate-200"
+          >
+            <div className="space-y-3">
+              {group.skills.map((skill, skillIndex) => (
+                <motion.div
+                  key={skill}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: 0.8 + index * 0.3 + skillIndex * 0.08,
+                  }}
+                  className="flex items-center gap-3"
+                >
+                  <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${group.gradient}`} />
+                  <span className="text-slate-700">{skill}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Floating background elements */}
+        <motion.div
+          animate={{ 
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.6, 0.3]
+          }}
+          transition={{ 
+            duration: 5,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className={`absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br ${group.bgGradient} rounded-full blur-3xl pointer-events-none -z-10`}
+        />
       </motion.div>
-    </motion.div>
+    </div>
   );
 }
 
 export default function SkillsChapter() {
   return (
-    <div className="min-h-[80vh] flex items-center justify-center py-12">
-      <div className="max-w-6xl mx-auto space-y-16">
+    <div className="min-h-[80vh] flex items-center justify-center py-16 relative overflow-hidden">
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 1px 1px, rgb(148 163 184 / 0.15) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center space-y-4 pt-10 md:pt-0"
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20 pt-10 md:pt-0"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-slate-800">
-            Expertise & Capabilities
-          </h2>
-          <p className="text-xl text-slate-600">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.6, type: "spring" }}
+            className="inline-block mb-4"
+          >
+            <div className="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
+                Design Approach & Capabilities
+              </h2>
+            </div>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-xl text-slate-600 max-w-3xl mx-auto"
+          >
             A blend of design expertise, technical skills, and collaboration to create seamless user experiences.
-          </p>
+          </motion.p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid gap-16">
-          <SkillCategory 
-            title="Design Expertise" 
-            skills={designSkills} 
-            color="bg-gradient-to-r from-purple-500 to-pink-500"
-            delay={0.2}
-          />
-          
-          <SkillCategory 
-            title="Development Collaboration" 
-            skills={developmentSkills} 
-            color="bg-gradient-to-r from-blue-500 to-cyan-500"
-            delay={0.4}
-          />
-          
-          <SkillCategory 
-            title="Core Competencies" 
-            skills={coreCompetencies} 
-            color="bg-gradient-to-r from-green-500 to-emerald-500"
-            delay={0.6}
-          />
+        {/* Process Flow - Desktop: Horizontal, Mobile: Vertical */}
+        <div className="grid md:grid-cols-3 gap-12 md:gap-24">
+          {skillGroups.map((group, index) => (
+            <SkillStage 
+              key={group.title} 
+              group={group} 
+              index={index} 
+              total={skillGroups.length}
+            />
+          ))}
         </div>
 
-        {/* Floating Elements */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Orbiting particles */}
+        {[...Array(6)].map((_, i) => (
           <motion.div
-            animate={{ 
-              y: [0, -20, 0],
-              rotate: [0, 5, 0]
+            key={i}
+            animate={{
+              x: [0, Math.random() * 100 - 50, 0],
+              y: [0, Math.random() * 100 - 50, 0],
+              scale: [1, 1.5, 1],
+              opacity: [0.2, 0.6, 0.2]
             }}
-            transition={{ 
-              duration: 6,
+            transition={{
+              duration: 8 + i,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: "easeInOut",
+              delay: i * 0.5
             }}
-            className="absolute top-1/4 left-8 w-16 h-16 bg-purple-400/20 rounded-lg blur-sm"
+            className={`absolute w-2 h-2 rounded-full bg-gradient-to-r ${skillGroups[i % 3].gradient} blur-sm`}
+            style={{
+              top: `${20 + i * 10}%`,
+              left: `${10 + i * 15}%`
+            }}
           />
-          <motion.div
-            animate={{ 
-              y: [0, 15, 0],
-              rotate: [0, -3, 0]
-            }}
-            transition={{ 
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute bottom-1/4 right-8 w-12 h-12 bg-blue-400/20 rounded-full blur-sm"
-          />
-          <motion.div
-            animate={{ 
-              y: [0, -10, 0],
-              x: [0, 5, 0]
-            }}
-            transition={{ 
-              duration: 7,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-            className="absolute top-1/2 right-1/4 w-8 h-20 bg-green-400/20 rounded-full blur-sm"
-          />
-        </div>
+        ))}
       </div>
     </div>
   );

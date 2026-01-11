@@ -31,12 +31,12 @@ export default function IntroChapter() {
           </h1>
           <div className="bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600 text-transparent">
             <h2 className="text-2xl md:text-3xl font-medium leading-relaxed">
-              Design Lead
+              Design Lead | UI/UX Designer
             </h2>
           </div>
         </motion.div>
 
-        {/* Quote */}
+        {/* Description */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -44,9 +44,9 @@ export default function IntroChapter() {
           className="max-w-4xl mx-auto"
         >
           <div className="relative bg-white/70 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
-            <blockquote className="text-lg md:text-xl text-slate-700 italic leading-relaxed">
-              With 8+ years of experience, I transform complex challenges into user-focused solutions and build design systems that empower teams to move faster with consistency.
-            </blockquote>
+            <p className="text-lg md:text-xl text-slate-700 leading-relaxed">
+              Design Lead with 8+ years of experience building scalable UX, design systems, and high-impact digital products. I specialize in user-centered SaaS and enterprise platforms, bridging business goals, user needs, and engineering constraints through strong leadership and collaboration.
+            </p>
           </div>
         </motion.div>
 
@@ -75,18 +75,6 @@ export default function IntroChapter() {
             className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-gradient-to-r from-pink-400/20 to-orange-400/20 rounded-full blur-xl"
           />
         </div>
-
-        {/* Journey Text */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="pt-8"
-        >
-          <p className="text-lg text-slate-600 text-center">
-            Let's dive into the work, skills, and stories that define my design journey.
-          </p>
-        </motion.div>
       </div>
     </div>
   );
