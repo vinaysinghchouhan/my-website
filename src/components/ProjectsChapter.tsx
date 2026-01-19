@@ -1,31 +1,35 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
+import projectImg1 from "../assets/Digital-Finance-Management-Platform.png";
+import projectImg2 from "../assets/Mentorship-&-Learning-Platform.png";
+import projectImg3 from "../assets/Fitness-&-Training-Marketplace-Platform.png";
+import projectImg4 from "../assets/Project&Resource-Management-System.png";
 
 const projects = [
   {
     title: "Digital Finance Management Platform",
     description: "Designed polished user interfaces with micro-interactions, visual graphics, and animations across web and mobile experiences to build trust and clarity.",
     focusAreas: ["Interface Design", "Design Systems", "Prototyping"],
-    image: "https://images.unsplash.com/photo-1748609339084-ea43ec1b8fbb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBmaW5hbmNlJTIwZGFzaGJvYXJkfGVufDF8fHx8MTc2NzcxNDEwM3ww&ixlib=rb-4.1.0&q=80&w=1080"
+    image: projectImg1,
   },
   {
     title: "Mentorship & Learning Platform",
     description: "Built reusable UI components, design system, and interactive prototypes to support scalable learning experiences and consistent product growth.",
     focusAreas: ["Design Systems", "Prototyping", "Interface Design"],
-    image: "https://images.unsplash.com/photo-1762330917056-e69b34329ddf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvbmxpbmUlMjBsZWFybmluZyUyMHBsYXRmb3JtfGVufDF8fHx8MTc2NzYzNTEzOXww&ixlib=rb-4.1.0&q=80&w=1080"
+    image: projectImg2,
   },
   {
     title: "Fitness & Training Marketplace Platform",
     description: "Defined user flows, wireframes, and user journey maps to create adaptive experiences optimized for multiple devices and user scenarios.",
     focusAreas: ["UX Strategy", "Interface Design", "Prototyping"],
-    image: "https://images.unsplash.com/photo-1732917771633-fff965badabe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwdHJhaW5pbmclMjBhcHB8ZW58MXx8fHwxNzY3NzE0MTA0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+    image: projectImg3,
   },
   {
     title: "Project & Resource Management System",
     description: "Conducted user research and analysis to design minimal, responsive UI and functional prototypes aligned with internal user needs and workflows.",
     focusAreas: ["UX Strategy", "Interface Design", "Prototyping"],
-    image: "https://images.unsplash.com/photo-1606836379799-f88b03bc7039?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9qZWN0JTIwbWFuYWdlbWVudCUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3Njc3MTA4ODZ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+    image: projectImg4,
   }
 ];
 

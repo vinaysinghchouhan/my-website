@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import { Button } from './components/ui/button';
 import IntroChapter from './components/IntroChapter';
 import SkillsChapter from './components/SkillsChapter';
 import ProjectsChapter from './components/ProjectsChapter';
 import ExperienceChapter from './components/ExperienceChapter';
 import ContactChapter from './components/ContactChapter';
+import resumePdf from "./assets/Vinay_Singh_Chouhan_Design_Lead_UIUX.pdf";
 
 const chapters = [
   { id: 'intro', title: 'Introduction', component: IntroChapter },
@@ -38,6 +39,17 @@ export default function App() {
       // Reset scroll position to top
       window.scrollTo(0, 0);
     }
+  };
+
+  // Download Resume function
+  const downloadResume = () => {
+    // Create a link element
+    const link = document.createElement('a');
+    link.href = resumePdf; // Path to your resume JPG file
+    link.download = 'Vinay_Singh_Chouhan_Design_Lead_UIUX.pdf'; // Downloaded file name
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // Keyboard navigation
@@ -96,19 +108,17 @@ export default function App() {
         </div>
       </div>
 
-      {/* Chapter Title */}
+      {/* Download Resume Button */}
       <div className="fixed top-6 right-6 z-40">
-        <motion.div
-          key={currentChapter}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.3 }}
-          className="bg-white/90 backdrop-blur-sm rounded-full px-6 py-2 shadow-lg"
+        <button
+          onClick={downloadResume}
+          className="flex items-center gap-2 bg-white/90 backdrop-blur-sm rounded-full px-6 py-2 shadow-lg hover:bg-white transition-colors duration-200 group"
         >
-          <span className="text-sm font-medium text-slate-700">
-            {chapters[currentChapter].title}
+          <Download className="w-4 h-4 text-slate-700 group-hover:text-blue-600 transition-colors" />
+          <span className="text-sm font-medium text-slate-700 group-hover:text-blue-600 transition-colors">
+            Download Resume
           </span>
-        </motion.div>
+        </button>
       </div>
 
       {/* Main Content */}
