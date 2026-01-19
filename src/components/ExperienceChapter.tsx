@@ -127,9 +127,12 @@ export default function ExperienceChapter() {
           transition={{ duration: 0.5 }}
           className="text-center pt-10 md:pt-0"
         >
-          <h2 className="text-4xl md:text-5xl text-slate-900">
-            Career Journey & Impact
-          </h2>
+             <div class="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent overflow-visible">
+              <h2 class="text-5xl md:text-6xl font-bold tracking-tight leading-[1.2] py-2">
+              Career Journey & Impact
+            </h2>
+          </div>
+            
         </motion.div>
 
         {/* Company Info */}

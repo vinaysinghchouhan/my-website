@@ -179,11 +179,11 @@ export default function SkillsChapter() {
             transition={{ duration: 0.6, type: "spring" }}
             className="inline-block mb-4"
           >
-            <div className="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent">
-              <h2 className="text-5xl md:text-6xl font-bold tracking-tight">
-                Design Approach & Capabilities
-              </h2>
-            </div>
+            <div class="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent overflow-visible">
+              <h2 class="text-5xl md:text-6xl font-bold tracking-tight leading-[1.2] py-2">
+              Design Approach & Capabilities
+            </h2>
+          </div>
           </motion.div>
           <motion.p
             initial={{ opacity: 0 }}

@@ -92,9 +92,11 @@ export default function ContactChapter() {
           transition={{ duration: 0.6 }}
           className="text-center space-y-4 pt-10 md:pt-0"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-slate-800">
-            Open for Opportunities
-          </h2>
+            <div class="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent overflow-visible">
+              <h2 class="text-5xl md:text-6xl font-bold tracking-tight leading-[1.2] py-2">
+              Open for Opportunities
+            </h2>
+          </div>
           <p className="text-xl text-slate-600">
             I'm open to new roles where design, strategy, and collaboration come together.
           </p>

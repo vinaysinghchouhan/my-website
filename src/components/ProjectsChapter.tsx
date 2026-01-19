@@ -58,9 +58,12 @@ export default function ProjectsChapter() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 md:mb-24"
         >
-          <h2 className="text-4xl md:text-5xl font-semibold text-slate-800">
-            Featured Projects
-          </h2>
+          <div class="bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent overflow-visible">
+            <h2 class="text-5xl md:text-6xl font-bold tracking-tight leading-[1.2] py-2">
+              Featured Project
+            </h2>
+          </div>
+
         </motion.div>
 
         {/* Main Project Showcase */}
@@ -96,7 +99,7 @@ export default function ProjectsChapter() {
                   >
                     <ChevronLeft className="w-5 h-5 text-slate-600 group-hover:text-white transition-colors" />
                   </button>
-                  
+
                   <button
                     onClick={goToNext}
                     className="group p-3 rounded-full border border-slate-300 hover:border-slate-800 hover:bg-slate-800 transition-all duration-300"
@@ -229,7 +232,7 @@ export default function ProjectsChapter() {
           >
             <ChevronLeft className="w-5 h-5 text-slate-600 group-hover:text-white transition-colors" />
           </button>
-          
+
           <button
             onClick={goToNext}
             className="group p-3 rounded-full border border-slate-300 hover:border-slate-800 hover:bg-slate-800 transition-all duration-300"
